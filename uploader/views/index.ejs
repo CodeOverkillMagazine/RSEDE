@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://newcsvupload.vidhi.thakkar.radixusers1.com/assets/custom.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-12 preview-block">
+            <div class="panel panel-default">
+                <div class="panel-heading preview-heading">
+                    <h4>File Upload</h4>
+                    <a class="btn btn-info pull-right" href="/preview" style="position:absolute; top:12px; right:15px;">Preview Files</a>
+                </div>
+                <div class="panel-body">
+                    <% if(successmsg != ''){ %>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <%=successmsg%>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    <% } else { }%>
+                    <% if(errmsg != ''){ %>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <%=errmsg%>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    <% } else { }%>
+                    <form action="/save" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Select :</label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="file_type" required>
+                                    <option value="">Select</option>
+                                    <option value="CSU TMC Matches">CSU TMC Matches</option>
+                                    <option value="CCC-CEEBCode">CCC-CEEBCode</option>
+                                    <option value="CCC-ADTs">CCC-ADTs</option>
+                                    <option value="CSU Campus">CSU Campus</option>
+                                    <option value="CCC Campus">CCC Campus</option>
+                                    <option value="CSU Degrees">CSU Degrees</option>
+                                    <option value="CCC Degrees">CCC Degrees</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 text-danger hide" id="nameerr"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">File :</label>
+                            <div class="col-md-9">
+                                <input type="file" name="uploaded_file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-md-3"></label>
+                                <div class="col-sm-9">
+                                    <input type="submit" class="btn btn-info" id="save" value="Upload" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

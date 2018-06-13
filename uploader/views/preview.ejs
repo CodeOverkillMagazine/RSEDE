@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://newcsvupload.vidhi.thakkar.radixusers1.com/assets/custom.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-12 preview-block">
+            <div class="panel panel-default">
+                <div class="panel-heading preview-heading">
+                    <h4>File List</h4>
+                    <a class="btn btn-info pull-right" href="/">Back</a>
+                </div>
+                <div class="panel-body">
+                    <% if(locals.fileerrormsg != undefined){ %>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <%=fileerrormsg%>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    <% } else { }%>
+                    <ul class="list-group">
+                        <%  if(uploadFilesData.length){ 
+                                for(var i = 0;i < uploadFilesData.length;i++) { %>
+                                    <li class="list-group-item"><a href="/preview?file=<%=uploadFilesData[i].uploaded_file%>"><%=uploadFilesData[i].uploaded_file%></a></li>
+                        <% 
+                                }
+                            }
+                        %>
+                    </ul>
+                    <% if(fileContent.length){ %>
+                        <h4><%= previewFile %></h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <% for(let k= 0;k < fileContent[0].length;k++) { %>
+                                        <th><%= fileContent[0][k] %></th>
+                                    <% } %>
+                                </thead>
+                                <tbody>
+                                    <% for(var i = 1;i < fileContent.length;i++) { %>
+                                        <tr>
+                                            <% for(var j = 0;j < fileContent[i].length;j++) { %>
+                                                    <td><%= fileContent[i][j] %></td>
+                                            <% } %>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% 
+                        }
+                    %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

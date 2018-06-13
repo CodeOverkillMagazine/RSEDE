@@ -1,0 +1,11 @@
+.preview-block {
+    margin-top:50px;
+}
+.preview-heading {
+    position:relative;
+}
+.preview-heading a {
+    position:absolute; 
+    top:12px; 
+    right:15px;
+}
